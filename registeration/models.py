@@ -65,7 +65,7 @@ class Profile(models.Model):
    
 class Userdetails(models.Model):
     user = models.OneToOneField(User, on_delete= models.CASCADE)
-    dropcountry = CountryField(default="India")
+    dropcountry = CountryField()
     
     def get_absolute_url(self):
         return reverse('blog-home')    
