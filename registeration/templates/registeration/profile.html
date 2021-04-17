@@ -78,8 +78,8 @@ div#div_id_background_image, div#div_id_image{
         <img class="rounded-circle account-img j" src="{{ user.profile.image.url }}">  
       </div>
       <div class="content-section">     
-      <h1>{{ user.username}}</h1>
-        <h5>{{user.profile.bio}}</h5>
+      <h1 style="text-transform: capitalize;">{{ user.username}}</h1>
+        <h5 style="text-transform: capitalize;">{{user.profile.bio}}</h5>
         <br>
         <button onclick="myFunction()" class="btn btn-warning">update profile</button>
         
