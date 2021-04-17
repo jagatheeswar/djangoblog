@@ -30,7 +30,6 @@ lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
 nexmo==2.5.2
-numpy==1.19.2
 phonenumbers==8.12.14
 pickle-mixin==1.0.2
 Pillow==8.0.1
@@ -43,8 +42,6 @@ python-dateutil==2.8.1
 python-dotenv==0.15.0
 pytz==2020.1
 requests==2.25.0
-scikit-learn==0.23.2
-scipy==1.5.2
 six==1.15.0
 soupsieve==2.0.1
 sqlparse==0.4.1
