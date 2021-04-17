@@ -17,7 +17,7 @@ def save_profile(sender, instance, **kwargs):
 @receiver(post_save, sender=User)
 def create_userdetails(sender, instance, created, **kwargs):
     if created:
-        Userdetails.objects.create(user=instance, dropcountry="India")
+        Userdetails.objects.create(user=instance, dropcountry="GG")
 
 
 @receiver(post_save, sender=User)
