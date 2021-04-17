@@ -1,0 +1,68 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}  
+
+<h4>comment your views</h4>
+<div class="commentform">
+    
+  <form action="{% url 'comment' %}" method="POST">
+        {% csrf_token %} 
+      
+      <textarea cols="30" minlength="4" maxlength="120" rows="3"  placeholder="comment" type="text" name="box" ></textarea>
+      
+      <input name="currentpostid" hidden value="{{num}}" type="text">
+      <button type="submit" class="btn btn-primary">comment <i class="fa fa-comment"></i></button>
+      </form>
+    </div>
+      <hr>
+      <h4>
+        There are {{count}} comments
+      </h4>
+{% for context in contexts %}
+
+<div class="commentshow">
+<div class="commentshow1">
+<a href="{% url 'user-jaga' context.commentater %}" class="article-title">by, {{context.commentater}}</a>
+
+<span>{{context.date_posted}}</span>
+</div>
+<br>
+<p>{{context.comment}}</p>
+
+</div>
+<br>
+{% endfor %}
+<style>
+  .commentshow{
+    border: 2px solid white;
+    color: black;  
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .commentform{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  h4{
+    text-align: center;
+  }
+  div.commentshow1{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    color: black;
+    font-weight: 600;
+    list-style: none;
+
+  }
+  a,h4{
+    color: black;
+    text-transform: none;
+  }
+
+</style>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% block content %}  
+<style>
+  h3,button,a{
+    text-align: center;
+  }
+  button a{
+    font-weight: 700;
+    font-size: 26px;
+    text-align: center;
+    text-decoration: none;
+  }
+  a:link{
+    text-decoration: none;
+  }
+  
+</style>
+  <h3>
+      u are logged out of the blog. Thanks for Your contribution. see you soon.
+  </h3>
+  <br>
+<h3>click the login button to resume your wonderful contribution
+  <br><br>
+  <button class="btn btn-primary"><a style="color: yellow;" class="ml-2" href="{% url 'login' %}"> login</a></h3></button>
+{% endblock content %}

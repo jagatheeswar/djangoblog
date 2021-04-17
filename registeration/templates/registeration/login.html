@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}  
+
+
+  <div>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">
+                    join today
+                </legend>
+            
+<div id="div_id_username" class="form-group"> <label for="id_username" class=" requiredField">
+    Username<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="30" class="textinput textInput form-control" required id="id_username"> </div> </div> <div id="div_id_password" class="form-group"> <label for="id_password" class=" requiredField">
+    Password<span class="asteriskField">*</span> </label> <div class=""> <input maxlength="20" type="password" name="password" autocomplete="current-password" class="textinput textInput form-control" required id="id_password"> </div> </div>
+
+                            
+            </fieldset>
+            <div>
+            <button class="btn btn-outline-danger" type="submit">login
+            </button>
+        </div>
+    </form>
+</div>
+<div class="text-muted"> need a account <a class="ml-2" href="{% url 'register' %}"> sign up</a></div>
+{% endblock content %}

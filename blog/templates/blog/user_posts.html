@@ -1,0 +1,112 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<style>
+  div#div_id_background_image a, div#div_id_image a{
+    font-size: small;
+  }
+  
+  div#div_id_background_image, div#div_id_image{
+    font-size:larger;
+  }
+  .page{
+    justify-content: space-around;
+    display: flex;
+    
+    
+  }
+  img.j{
+    position:absolute;
+    top: 35px;
+    left: 20px
+  }  
+  #more {display: none;}
+  @media screen and (max-width: 20000px) {
+    .ac{
+      height:500px;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .ac{
+      height:400px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .ac{
+      height:300px;
+    }
+  }
+  h1.text{
+color:rgb(184, 0, 0)
+  }
+</style>
+
+<div class="media contentsec">
+  <img class="ac" width="100%" src="{{ name.profile.background_image.url }}">
+  <img class="rounded-circle account-img j" src="{{ name.profile.image.url  }}">  
+</div>
+<div class="content-section">
+  <h1 style="text-transform: capitalize;" class="text">{{name.username}}</h1>
+  <h4 style="color: rgb(184, 0, 0);">country:  {{name.userdetails.dropcountry.name}} </h4>
+  <h3 style="text-transform: capitalize;  color:rgb(184, 0, 0) " > {{name.profile.bio}}</h3> 
+  <h6 style="text-transform: capitalize; color:rgb(182, 0, 0) ">{{name.username}}'s Birthday is on {{name.phonenumbers.month}} {{name.phonenumbers.day}}</h6>
+  
+         
+</div>
+<h1 class="mb-3 postby" style="text-align: center;"> {{ count }} Posts by {{ view.kwargs.username }}</h1>
+
+{% for post in roles %}
+        
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{name.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+            <h3 class="name">{{ post.author }}</h3>
+              <small class="date">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'blog-detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }} 
+              </p>
+          </div>
+        </article>
+        <script>
+          function myFunction() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("myBtn");
+          
+            if (dots.style.display === "none") {
+              dots.style.display = "inline";
+              btnText.innerHTML = "Read more";
+              moreText.style.display = "none";
+            } else {
+              dots.style.display = "none";
+              btnText.innerHTML = "Read less";
+              moreText.style.display = "inline";
+            }
+          } 
+        </script>
+    {% endfor %}
+    <div class="page">
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-primary mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-primary mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-primary mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-primary mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+    {% endif %}
+  </div>
+{% endblock content %}

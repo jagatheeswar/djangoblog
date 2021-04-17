@@ -1,0 +1,112 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<style>
+  #postdetailcontent{
+    color: black;
+    text-transform: capitalize;
+    font-size: larger;
+  }
+  .detailauth:hover{
+    color: red;
+  }
+  @media screen and (max-width: 20000px) {
+    .ac1{
+      height:600px;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .ac1{
+      height:500px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .ac1{
+      height:300px;
+    }
+  }
+</style>
+<article class="media postdetailcontentsection">
+  <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+  
+  <div class="media-body">
+  
+    <div class="article-metadata">
+      
+      {% if object.author == user %}
+      
+        <div>
+          <br>
+          <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+          <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+        </div>
+        
+      {% endif %}
+      
+      <a href="{% url 'user-jaga' object.author%}"><h1 class="name detailauth" style="text-transform: capitalize;">{{ object.author }}</h1>
+      <small class="date">{{ object.date_posted|date:"F d, Y" }}</small>
+  
+<div class="likcom">
+
+  <form action="{% url 'commentsection' %}" method="GET">
+    {% csrf_token %} 
+  
+  <input name="currentpostids" value="{{object.id}}" type="text" hidden>
+  <button class="cmtbtn" type="submit">comment section</button>
+  </form>
+  
+  </form>
+  <br>
+  <form action="{% url 'like_post' object.pk %}" method="POST">
+    {% csrf_token %}
+  
+    {% if liked %}
+    
+    <button type="submit" name="post_id" value="{{object.pk}}" class="btn btn-danger">dislike</button>
+    
+    {% else %}
+  
+    <button type="submit" name="post_id" value="{{object.pk}}" class="btn btn-primary">like</button>
+  
+    {% endif %}
+  
+  </form>
+  
+  <span>{{total_likes}} <i style="color: red;" class="fa fa-heart"></i></span>
+  </div>
+  
+  <br>
+    </div>
+    
+    <h2 class="article-title" style="text-transform: capitalize;">{{ object.title }}</h2>
+    
+    <p class="article-content" id="postdetailcontent" style="text-transform: capitalize;">{{ object.content }}</p>
+    
+  </div>
+  <img class="ac1"  width="100%" src="{{ object.blogimage.url }}">
+</article>
+
+
+
+<style>
+  .likcom{
+    display: flex;
+    justify-content: space-between;
+  }
+  .cmtbtn{
+      
+      box-sizing: border-box;
+      border: none;
+      border-radius: 5px;
+      color: black;
+      background-color: red;
+      font-weight: bold;
+      font-size: medium;
+    }
+  .cmtbtn:hover{
+    transform: scale(1.1);
+    background-color: black;
+    color: red;
+    font-weight: bold;
+  }
+</style>
+{% endblock content %}
