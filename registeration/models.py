@@ -72,8 +72,7 @@ class Userdetails(models.Model):
 
 class Phonenumbers(models.Model):
     user = models.OneToOneField(User, on_delete= models.CASCADE)    
-    mobileno = models.IntegerField()
-    
+    mobileno = models.BigIntegerField()
     month = models.CharField(max_length=15, choices=MONTH_CHOICES, default='january')
     day = models.CharField(max_length=2, choices=DAY_CHOICES, default='01')
 
