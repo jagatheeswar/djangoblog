@@ -89,11 +89,11 @@ div#div_id_background_image, div#div_id_image{
           <div class="updateclass" id="myDIV">
           <fieldset class="form-group">
               <legend class="border-bottom mb-4">Profile Info</legend>
-              <div id="id_username" class="form-group"> <label for="id_username">Username:</label><input class="textinput form-control" type="text" name="username" value="{{user.username}}" maxlength="30" required id="id_username"><br><span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></div>
+              <div id="id_username" class="form-group"> <label for="id_username">Username:</label><input class="textinput form-control" type="text" oninput="this.value = this.value.toLowerCase()" style="text-transform: capitalize;" name="username" value="{{user.username}}" maxlength="30" required id="id_username"><br><span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></div>
 <div id="id_email" class="form-group">
 <label for="id_email">
 Email:</label>
-<input maxlength="40" type="email" name="email" value="{{user.email}}" required id="id_email" class="textinput form-control">
+<input maxlength="40" type="email" name="email" oninput="this.value = this.value.toLowerCase()" style="text-transform: capitalize;" value="{{user.email}}" required id="id_email" class="textinput form-control">
               <br>
 </div>
 

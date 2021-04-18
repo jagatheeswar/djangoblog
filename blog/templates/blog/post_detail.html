@@ -42,7 +42,7 @@
         
       {% endif %}
       
-      <a href="{% url 'user-jaga' object.author%}"><h1 class="name detailauth" style="text-transform: capitalize;">{{ object.author }}</h1>
+      <a href="{% url 'user-jaga' object.author%}"><h1 class="name detailauth" style="text-transform: capitalize;">{{ object.author }}</h1></a>
       <small class="date">{{ object.date_posted|date:"F d, Y" }}</small>
   
 <div class="likcom">
@@ -80,7 +80,7 @@
     <h2 class="article-title" style="text-transform: capitalize;">{{ object.title }}</h2>
     
     <p class="article-content" id="postdetailcontent" style="text-transform: capitalize;">{{ object.content }}</p>
-    
+    <h6 style="text-transform: capitalize; color:black; font-weight:500">#{{object.tags}}</h6>
   </div>
   <img class="ac1"  width="100%" src="{{ object.blogimage.url }}">
 </article>

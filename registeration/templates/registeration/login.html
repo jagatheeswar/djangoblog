@@ -12,16 +12,19 @@
                 </legend>
             
 <div id="div_id_username" class="form-group"> <label for="id_username" class=" requiredField">
-    Username<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="30" class="textinput textInput form-control" required id="id_username"> </div> </div> <div id="div_id_password" class="form-group"> <label for="id_password" class=" requiredField">
-    Password<span class="asteriskField">*</span> </label> <div class=""> <input maxlength="20" type="password" name="password" autocomplete="current-password" class="textinput textInput form-control" required id="id_password"> </div> </div>
+    Username<span class="asteriskField">*</span> </label> <div class=""> <input type="text" oninput="this.value = this.value.toLowerCase()" style="text-transform: capitalize;" name="username" placeholder="username" autofocus autocapitalize="none" autocomplete="username" maxlength="30" class="textinput textInput form-control" required id="id_username"> </div> </div> <div id="div_id_password" class="form-group"> <label for="id_password" class=" requiredField">
+    Password<span class="asteriskField">*</span> </label> <div class=""> <input type="password" name="password" autocomplete="current-password" class="textinput  textInput form-control" required id="id_password"> </div> </div>
 
                             
             </fieldset>
             <div>
             <button class="btn btn-outline-danger" type="submit">login
             </button>
+            <p class="text-danger ml-2">forget password?
+                <a href="{% url 'password_reset' %}" class="link-primary">change your password here..</a>
+            </p>
         </div>
     </form>
 </div>
-<div class="text-muted"> need a account <a class="ml-2" href="{% url 'register' %}"> sign up</a></div>
+<div style="font-weight: bold; color:black"> Need an account <a class="ml-2" href="{% url 'register' %}"> sign up</a></div>
 {% endblock content %}

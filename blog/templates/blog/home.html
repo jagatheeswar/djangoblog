@@ -81,7 +81,7 @@ select option{
     <br>
       
     <form action="search/dummy">
-      <input type="text" placeholder="search by username" name="searchone"  class="textinput form-control" >
+      <input type="text" oninput="this.value = this.value.toLowerCase()" style="text-transform: capitalize;" placeholder="search by username" name="searchone"  class="textinput form-control" >
       <button type="submit" class="btn btn-warning mybtn btn-lg"><i class="fa fa-search"></i></button>
       
     </form>
